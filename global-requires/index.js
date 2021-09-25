@@ -5,6 +5,7 @@ const acceptableArgs = ['true', 'false']
 
 // and exit with error if it is not.
 if (!process.argv[2] || acceptableArgs.indexOf(process.argv[2].toLowerCase()) === -1) {
+  console.log(`value must either be "true" or "false", not "${process.argv[2]}"`)
   process.exit(1)
 } 
 

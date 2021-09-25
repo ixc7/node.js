@@ -1,7 +1,10 @@
 #!/bin/bash
 
-# pass ANYTHING to run.sh for index.js to exit with 0 instead of 1.
-./index.js $1
-
-[ $? -eq 0 ] && echo "PASSED"
-[ $? -eq 1 ] && echo "FAILED"
+if [ -z $1  ]
+then
+  echo "usage: run {true|false}"
+else
+  ./index.js $1
+  [ $? -eq 0 ] && echo "passed tests"
+  [ $? -eq 1 ] && echo "failed tests"
+fi
