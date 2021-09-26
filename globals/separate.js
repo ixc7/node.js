@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-module.exports = (function(a) {
+module.exports = (function (a) {
   if (!global.validate) {
     return false
   } else {

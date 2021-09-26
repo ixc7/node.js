@@ -1,5 +1,5 @@
 
-function hello(x) {
+function hello (x) {
   return `hello ${x}`
 }
 
