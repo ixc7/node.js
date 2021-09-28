@@ -7,23 +7,24 @@ import readline from 'readline'
 import open from 'open'
 import Progress from 'progress'
 
+// download file from url
 const fileName = path.resolve(path.resolve(), 'myVideo.mp4')
 const destination = fs.createWriteStream(fileName)
-
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-})
-
 const req = https.request({
   host: 'file-examples-com.github.io',
   path: 'uploads/2017/04/file_example_MP4_640_3MG.mp4'
 })
 
-rl.on('SIGINT', () => {
-  console.log('\ndownload cancelled')
-  fs.rmSync(fileName)
-  process.exit(1)
+// cancel download on 's' key
+readline.emitKeypressEvents(process.stdin)
+process.stdin.setRawMode(true)
+process.stdin.on('keypress', function (str, key) {
+  if (str === 's') {
+    console.log('\ndownload cancelled')
+    process.stdin.setRawMode(false)
+    fs.rmSync(fileName)
+    process.exit(1)
+  }
 })
 
 req.on('response', function (res) {
@@ -50,5 +51,6 @@ req.on('response', function (res) {
   })
 })
 
-console.log('download starting')
-req.end()
+console.log(`download starting
+press 's' to cancel`)
+const foo = req.end()
