@@ -1,11 +1,8 @@
 {
-  "name": "tests",
+  "name": "nodejs-repo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "globals": "./globals/run.sh"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
