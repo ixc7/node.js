@@ -1,14 +1,19 @@
-/* eslint-disable */
-
 import readline from 'readline'
 
 function gotoTop (clear = true) {
+  const msg = 'press s or ctrl-c'
   if (clear) console.clear()
-  readline.cursorTo(process.stdout, 0, 0)
-  if (clear) process.stdout.write('\npress s or ctrl-c\n')
+
+  readline.cursorTo(
+    process.stdin,
+    Math.floor((process.stdout.columns / 2) - (msg.length / 2)), 1,
+    function () {
+      if (clear) process.stdin.write(`${msg}\r`)
+    }
+  )
 }
 
-function makeScreen (char = '$', border = ':', padding = 7) {
+function makeScreen (char = ' ', border = ' ', padding = 2) {
   let leftPad = ''
   for (let i = 0; i < Math.floor(padding / 2); i += 1) {
     leftPad += ' '
@@ -40,7 +45,7 @@ const rl = readline.createInterface({
 rl.input.on('keypress', function (str, key) {
   gotoTop()
   if (str === 's') {
-    process.stdout.write(makeScreen())
+    process.stdout.write(makeScreen('$', '#', 6))
   }
   gotoTop(false)
 })
