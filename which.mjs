@@ -7,7 +7,7 @@ function is (input) {
       { encoding: 'utf8' }
     )
   } catch {
-    return 'not found\n'
+    return ''
   }
 }
 
