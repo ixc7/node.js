@@ -9,6 +9,9 @@ function color (base = 30, str = 'hello world') {
 
 console.clear()
 process.stdout.write('\u001b[3J\u001b[1J\n')
-process.stdout.write(color(0))
-process.stdout.write(color(30))
-process.stdout.write(`${color(40)}\n`)
+
+for (let i = 0; i < 11; i += 1) {
+  process.stdout.write(`\nrange: ${i * 10}\n${color((i * 10))}`)
+}
+
+process.stdout.write('\n')
